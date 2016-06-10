@@ -27,7 +27,7 @@ module.exports = {
     plugins: [
         new webpack.BannerPlugin("---------nullice--------Banner 注释"),
         new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
-        // new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}})
+        new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}})
     ],
-    devtool: 'eval-source-map'
+    // devtool: 'eval-source-map'
 };

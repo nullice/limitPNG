@@ -72,11 +72,11 @@ LimitPNG.prototype.doDefault = function (option, mode, callBack)
     }
     else if (mode == "high")
     {
-        this.do([ PROCE.pngwolf(1)],PROCE.ect(0), option, callBack)
+        this.do([PROCE.pngwolf(1)], PROCE.ect(0), option, callBack)
     }
     else if (mode == "quick")
     {
-        this.do([ PROCE.ect(0)], option, callBack)
+        this.do([PROCE.ect(0)], option, callBack)
     }
     else if (mode == "256-high")
     {
@@ -97,15 +97,11 @@ LimitPNG.prototype.doDefault = function (option, mode, callBack)
     else if (mode == "lossy-low")
     {
         this.do([PROCE.pngquant(27, true), PROCE.truePNG(1), PROCE.pngout(0, true), PROCE.pngwolf(1), PROCE.zopflipng(1)], option, callBack)
-    }   
+    }
     else if (mode == "lossy-quick")
     {
         this.do([PROCE.pngquant(26, true), PROCE.ect(0)], option, callBack)
     }
-
-    
-
-    
 
 
 }
@@ -222,6 +218,14 @@ LimitPNG.prototype.do = function (in_processors, outOption, callBack)
             var time_consum = Date.now() - time_start;
             var err = "";
 
+
+            if (new_size > old_size)
+            {
+                new_size = old_size;
+                _tempFile =_pngFile;
+            }
+
+            
             if (outOption == "-overwrite")
             {
                 try
@@ -372,8 +376,6 @@ PROCE.truePNG.lossLessOps = [
 PROCE.truePNG.lossyOps = [
     {op: "-f0,5 -i0 -g0 -md remove all -zc8 -zm8 -zw7 -zs0,1 -quiet -force -y", name: ""},
 ];
-
-
 
 
 //--- pngout -------------------------------------
@@ -560,8 +562,6 @@ PROCE.pngquant.lossyOps = [
     {op: " --force --speed 1 --quality 0-1 --posterize 4 256", name: "256-lowest"},      // 25
     {op: " --force --speed 1  ", name: "lossy-high"},                                    // 26
     {op: " --force --speed 1 --quality 0-40", name: "lossy-low"},                        // 27
-
-
 
 
 ];
