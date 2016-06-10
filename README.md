@@ -36,7 +36,7 @@ compression Using tool binary list ：
 
 [![](http://ww3.sinaimg.cn/large/c35419f1gw1f4qhrttrtqj202g00v742.jpg)](http://creativecommons.org/publicdomain/zero/1.0)
 
-
+本质上这是我第一次接触 vue 和 electron 用来练习的草稿，只是有人觉得还挺有这个需求的，所以稍微完善了下就发出来了。
 -----------
 
 -----------
