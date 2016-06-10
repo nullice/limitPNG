@@ -4,6 +4,7 @@
 GUI PNG image compression tool ( GUI use Electron)
 
 [http://nullice.com/limitPNG/](http://nullice.com/limitPNG/)
+
 这是个用 electron 开发的图形界面 PNG 图片压缩工具。
 
 支持无损压缩和有损压缩。
