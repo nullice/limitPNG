@@ -1,3 +1,15 @@
+
+# =========================
+# 忽略难以上传的文件
+# =========================
+test
+UI
+release
+electron-v1.2.0-win32-x64
+bin
+.idea
+node_modules
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
