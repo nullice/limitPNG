@@ -1,0 +1,575 @@
+
+button.do {
+    display: block;
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transition: all .3s cubic-bezier(0.74, 0.07, 0.53, 1.06);
+    background: linear-gradient(70deg, #1ad7f9, #5eece4);
+    width: 130px;
+    border-radius: 50px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: lighter;
+    font-family: "Microsoft YaHei","Hiragino Sans GB","ヒラギノ角ゴ ProN W3 Regular","WenQuanYi Micro Hei","Hiragino Kaku Gothic ProN","メイリオ",Helvetica,sans-serif;
+    padding: 5px;
+    border: none;
+}
+
+button.do:hover {
+    transition: all .3s ease;
+    margin-top: -2px;
+    background: linear-gradient(20deg, #20cdff, #2dfff3);
+
+    width: 135px;
+    /* padding: 8px; */
+    box-shadow: 0 10px 20px #54f3ff;
+    /* border-radius: 0px; */
+}
+
+button.do:active {
+    width: 140px;
+    /* height: 30px; */
+    transition: all .1s cubic-bezier(0.74, 0.07, 0.53, 1.06);
+    font-size: 14px;
+}
+
+/* 必需 */
+.anime-transition {
+    transition: all .4s ease;
+    overflow: hidden;
+}
+
+.anime-enter, .anime-leave {
+    height: 0;
+    opacity: 0;
+}
+
+body {
+    font-family: "Microsoft YaHei","Hiragino Sans GB","ヒラギノ角ゴ ProN W3 Regular","WenQuanYi Micro Hei","Hiragino Kaku Gothic ProN","メイリオ",Helvetica,sans-serif;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+
+}
+
+.item div:not(.anime) {
+    display: inline-block;
+    padding: 6px 18px;
+    margin: 4px 8px;
+    cursor: default;
+    user-select: none;
+
+    background-color: rgba(255, 255, 255, 0);
+    color: rgba(64, 181, 202, 0.72);
+    font-weight: lighter;
+    -webkit-user-select: none;
+}
+
+.item div:not(.anime).name {
+    margin-left: 0;
+    padding-left: 36px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+.item div.done_ico img, .item div.doing_ico img, .item div.error_ico img {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+
+
+
+
+
+
+.item div.doing_ico img {
+    width: 14px;
+    height: 14px;
+    animation: fa-spin .65s infinite linear;
+}
+.item.anime-transition.error div {
+    color: #ff8282;
+}
+@keyframes fa-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.item div.done_ico, .item div.doing_ico ,.item div.error_ico{
+    padding: 0px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    margin-left: 12px;
+}
+
+#list {
+    position: absolute;
+    width: 100%;
+    top: 64px;
+    bottom: 75px;
+    overflow: overlay;
+
+    /*-webkit-user-select: none;*/
+}
+
+
+
+.item:first-child {
+    margin-top: 8px;
+}
+
+.list_shadow_bottm {
+    position: absolute;
+    height: 20px;
+    width: 100%;
+    background: linear-gradient(0deg, #ffffff, rgba(255, 255, 255, 0));
+    z-index: 999;
+    bottom: 74px;
+}
+
+.list_shadow_top {
+    position: absolute;
+    height: 10px;
+    width: 100%;
+    background: linear-gradient(180deg, #ffffff, rgba(255, 255, 255, 0));
+    z-index: 100;
+    top: 63px;
+}
+
+.item div.name {
+    margin-right: 220px;
+    padding-left: 26px;
+    display: block;
+    position: relative;
+}
+
+.item div.wave_box {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+}
+
+.item div.size_old {
+    position: absolute;
+    right: 0;
+    width: 85px;
+    text-align: end;
+    font-size: 14px;
+    top: 0px;
+    bottom: 0px;
+    vertical-align: middle;
+    padding: 2px 10px;
+    margin: 10px 3px;
+}
+
+
+.cant_do{
+    opacity: .5;
+    pointer-events: none;
+}
+
+.size_new {
+
+    position: absolute;
+    right: 90px;
+    width: 130px;
+    text-align: end;
+    font-size: 14px;
+    margin: 10px 10px;
+    top: 0px;
+    bottom: 0px;
+    vertical-align: middle;
+    padding: 2px 10px;
+    white-space: nowrap;
+}
+
+.item {
+    position: relative;
+    margin-bottom: 0;
+    background-color: rgba(221, 253, 236, 0);
+    border-bottom: 1px solid rgba(85, 193, 224, 0.16);
+}
+
+#drag_file_showbox {
+    background-color: rgba(0, 130, 101, 0.15);
+    position: fixed;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border: 2px dashed #68C1AE;
+    display: none;
+}
+
+/*@-webkit-keyframes gogogo {*/
+    /*0% {*/
+
+        /*-webkit-transform: rotate(0deg);*/
+        /*border: 5px solid red;*/
+
+    /*}*/
+    /*50% {*/
+        /*-webkit-transform: rotate(180deg);*/
+        /*background: black;*/
+        /*border: 5px solid yellow;*/
+    /*}*/
+    /*100% {*/
+        /*-webkit-transform: rotate(360deg);*/
+        /*background: white;*/
+        /*border: 5px solid red;*/
+    /*}*/
+
+/*}*/
+
+select {
+    position: absolute;
+    font-size: 12px;
+    margin-top: 2px;
+    font-family: "Microsoft YaHei","Hiragino Sans GB","ヒラギノ角ゴ ProN W3 Regular","WenQuanYi Micro Hei","Hiragino Kaku Gothic ProN","メイリオ",Helvetica,sans-serif;
+    font-weight: lighter;
+    padding: 4px 5px;
+    border-radius: 4px;
+    border: 1px solid rgba(158, 217, 224, 0.59);
+    color: #4ab5c1;
+    width: 75px;
+    outline: none;
+    cursor: pointer;
+    opacity: .8;
+}
+
+select.lift {
+    margin-left: 2px;
+}
+
+select.right {
+    right: 0px;
+    width: 90px;
+    margin-right: 2px;
+}
+
+select:hover {
+    border: 1px solid #9ed9e0;
+    opacity: 1;
+}
+
+optgroup {
+    color: #6ba0af;
+}
+
+.op_p {
+    color: #3e8088;
+    font-size: 13px;
+}
+
+option.op_limit {
+    color: #00b8d4;
+}
+
+option.op_high {
+    color: #23c6e4;
+}
+
+option.op_quick {
+    color: #41b9c5;
+}
+
+.bottom_bar {
+    position: absolute;
+    width: 95%;
+    bottom: 46px;
+    left: 0;
+    margin: auto;
+    right: 0;
+}
+
+.item div.size_new {
+    padding-right: 0;
+    font-weight: normal;
+}
+
+
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+    width: 10px;
+    transition: all 1s;
+}
+
+
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    width: 11px;
+    background: rgba(35, 205, 234, 0.23);
+    border: 3px solid #fff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    transition: all 1s;
+    border: none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: rgba(35, 205, 234, 0.33);
+}
+
+.loading_input_file img.icon{
+    width: 26px;
+    height: 26px;
+    animation: fa-spin .55s infinite;
+    margin-bottom: -6px;
+    position: relative;
+}
+
+.loading_input_file {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.76);
+    z-index: 9999;
+}
+
+.info {
+    position: absolute;
+    top: 33%;
+    margin: auto;
+    width: 70%;
+    left: 0;
+    right: 0;
+    vertical-align: middle;
+    text-align: center;
+    color: #3b96b7;
+}
+.thumbnail.anime {
+    z-index: -1;
+    top: 3px;
+    padding: 0;
+    width: 26px;
+    height:15px;
+    overflow: hidden;
+    margin: 0;
+    display: inline-block;
+    opacity: .8;
+    cursor:pointer;
+
+}
+
+.thumbnail.anime:hover{
+
+    opacity: 1;
+    box-shadow: 0 3px 5px #40e3e8;
+}
+
+.thumbnail.anime img {
+    max-height: 30px;
+    max-width: 40px;
+    position: relative;
+    margin-top: -50%;
+    margin-left: 0;
+
+}
+
+.item div.size_new span {
+    font-size: 10px;
+    background: linear-gradient(30deg, rgba(46, 207, 236, 0.69), rgba(22, 214, 203, 0.94));
+    color: rgb(255, 255, 255);
+    padding: 2px 7px;
+    border-radius: 9px;
+}
+
+
+.menu_bar button img {
+    width: 13px;
+    height: 13px;
+
+}
+
+#remove_all img
+{
+    width: 14px;
+    height: 14px;
+    margin-top: 2px;
+}
+
+
+
+#thread_number img
+{
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+
+}
+
+button#thread_number {
+    opacity: .55;
+    position: relative;
+}
+
+button#thread_number:hover {
+    opacity: 1;
+}
+
+.menu_bar button,.window_nar button {
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid rgba(255, 255, 255, 0);
+    margin: 4px 0;
+    outline: none;
+    border-radius: 2px;
+    cursor: pointer;
+    opacity: .6;
+
+
+}
+
+
+.menu_bar button:hover, .window_nar button:hover{
+    opacity: 1;
+    border: 1px solid #a0e1e2;
+}
+
+.menu_bar {
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    top: 30px;
+    z-index: 222;
+
+}
+
+#open_file{
+    margin-left: 10px;
+}
+
+.list_info {
+    position: absolute;
+    display: inline-block;
+    right: 26px;
+    font-size: 12px;
+    color: #93d3da;
+    margin-top: 7px;
+}
+
+div#vue_app {
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 3px 7px rgba(21, 41, 43, 0.43);
+    /*padding: 0px 10px;*/
+    position: absolute;
+    top: 2px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+
+}
+
+::selection {
+    background: rgba(126, 255, 247, 0.32);
+    color: #93D3DA;
+    border-radius: 3px;
+}
+
+
+
+div#drag_box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rebeccapurple;
+}
+
+#vue_app div{ -webkit-user-select: none;}
+
+#list,button,select,.menu_bar{ -webkit-app-region: no-drag;}
+
+#vue_app div.list_info{
+    -webkit-user-select: text;
+}
+
+.title {
+    font-size: 11px;
+    width: 84px;
+    padding: 6px 12px;
+    color: rgba(0, 156, 179, 0.58);
+    cursor: pointer;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    -webkit-app-region: no-drag;
+}
+
+.title span.ver {
+    font-size: 9px;
+    color: rgba(49, 67, 70, 0.45);
+}
+
+.title:hover
+{
+    animation-name: jello;
+    transform-origin: 40% 20% ;
+    animation-duration: .35s;
+    animation-fill-mode: both;
+}
+
+select#select_thread {
+    position: absolute;
+    width: 28px;
+    height: 20px;
+    display: inline-block;
+    top: 2px;
+    left: 0px;
+    opacity: 0;
+}
+
+.window_nar {
+    position: absolute;
+    right: 10px;
+    z-index: 555;
+    top: 0px;
+}
+
+
+.window_nar button {
+    color: #2caebd;
+    width: 30px;
+    background-color: #fff;
+    border: 1px solid rgba(158, 217, 224, 0.0);
+}
+
+div#welcome {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    margin-top: 40%;
+    color: rgba(103, 212, 212, 0.39);
+    font-weight: lighter;
+    font-size: 20px;
+}

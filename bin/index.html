@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>limitPNG</title>
+    <script src="./lib/jquery.min.js"></script>
+    <script src="vendor.bundle.js"></script>
+    <link rel="stylesheet" href="./lib/animate.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/wave-doing.css">
+
+
+</head>
+<body id="main_body"  >
+<!--style="-webkit-app-region: drag"-->
+
+
+
+
+<div id="vue_app" class="animated-q zoomIn" style="-webkit-app-region: drag">
+
+<div  class="title"  onmousedown="if(event.button ==2){ fileCompare()}" onclick="openUrl('http://nullice.com/limitPNG/')">limitPNG <span class="ver">BETA2</span></div>
+    <!--<h1>Hello World!</h1>-->
+    <!--We are using node script>document.write(process.versions.node)</script>,-->
+    <!--Chrome <script>document.write(process.versions.chrome)</script>,-->
+    <!--and Electron <script>document.write(process.versions.electron)</script>.-->
+
+
+    <div class="window_nar">
+        <button title="最小化" id="minimize" onclick="minimize()"   > - </button>
+        <button title="退出" id="exit"  onclick="exit()" > x </button>
+    </div>
+    <div class="menu_bar" >
+        <button title="打开文件" id="open_file" v-on:click="open_file"><img src="./img/file.svg" alt=""  ></button>
+        <button title="清空列表" id="remove_all" v-on:click="remove_all"><img src="./img/remove.svg" alt=""></button>
+        <button title="同时处理文件数：{{thread}}" id="thread_number"><img src="./img/cpu.svg" alt="">
+            <select name="" id="select_thread" v-model="thread">
+                <option value="1">{{thread-1?'1':'1<'}}</option>
+                <option value="2">{{thread-2?'2':'2<'}}</option>
+                <option value="3">{{thread-3?'3':'3<'}}</option>
+                <option value="4">{{thread-4?'4':'4<'}}</option>
+                <option value="5">{{thread-5?'5':'5<'}}</option>
+                <option value="6">{{thread-6?'6':'6<'}}</option>
+                <!--<option value="7">{{thread-7?'7':'7<'}}</option>-->
+                <!--<option value="8">{{thread-8?'8':'8<'}}</option>-->
+             </select>
+        </button>
+
+        <div ondblclick="out_log_try()" class="list_info"> 共 {{list.length}} 个文件，总大小：{{list_size_old|filter_file_size}} <span v-if="list_size_new">，新总大小：{{list_size_new|filter_file_size}}</span></div>
+    </div>
+
+    <div class="list_shadow_top"></div>
+    <div id="list" >
+
+
+
+        <div id="welcome"  v-if="list.length==0"> 拖入 PNG 图片进来吧</div>
+
+        <div class="loading_input_file" v-if="loading_file">
+            <div class="info">
+                <!--<img class="icon" src="./img/loading.svg" alt=""> -->
+                正在载入 PNG 图片，会扫描子目录中的 PNG 图片...
+            </div>
+        </div>
+
+        <div class="list_div" v-dragula="list" bag="my-bag" >
+
+            <div v-for="z of list" class="item " transition="anime" v-bind:class="{'done':z.done, 'error':z.error}">
+                <!--v-on:dragstart="darg_start" v-on:drag="darg_on" v-on:dragend="darg_end" -->
+                <div class="doing_ico" v-if="z.doing"><img src="./img/loading.svg" alt=""></div>
+                <div class="done_ico" v-if="z.done"><img src="./img/ok.svg" alt=""></div>
+                <div class="error_ico" v-if="z.error" title="{{z.error_info}}"><img src="./img/error.svg" alt=""></div>
+                <div class="name ">
+                    <div v-if="z.path&&true" class="thumbnail anime" title="右键打开原图片, 左键打开新图片" v-on:click="openImg(z.path)"  v-on:mousedown="openImg_right($event,z.new_File)"><img src=""
+                                                                                                                     v-bind:src="z.path"
+                                                                                                                     alt="">
+                    </div>
+                    <span title="{{z.path}}">{{z.name}}</span>
+                </div>
+                <div title="原大小： {{z.size_old}} B" class="size_old">{{z.size_old | filter_file_size }}</div>
+                <div title="新大小： {{z.size_new}} B \n减少大小：{{(z.size_old - z.size_new) | filter_file_size}} （{{z.size_old - z.size_new}} B）"
+                     v-if="z.size_new >0" class="size_new animated-s  fadeInRight">{{z.size_new | filter_file_size }} ←
+                    <span class="animated  fadeInUp"> {{z.size_new/z.size_old | filter_file_size_pre }} </span>
+                </div>
+
+                <div class="wave_box" v-if="z.doing">
+                    <div v-bind:class="{ 'wave': z.doing}" class='-one anime'></div>
+                    <div v-bind:class="{ 'wave': z.doing}" class=' -two anime'></div>
+                    <div v-bind:class="{ 'wave': z.doing}" class=' -three anime'></div>
+                    <div v-bind:class="{ 'wave': z.doing}" class=' -four anime'></div>
+                    <div v-bind:class="{ 'wave': z.doing}" class=' -five anime'></div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--<div id ="b"> {{list | json }}</div>-->
+    </div>
+    <div class="list_shadow_bottm"></div>
+    <div style="-webkit-app-region: drag" class="bottom_bar" v-bind:class="{ 'cant_do': tasks_doing>0}">
+
+        <select name="mod" value="limit" class="lift"  v-model="mode">
+            <optgroup label="有损">
+                <option value="lossy-quick" title="快速有损压缩">有损快</option>
+                <option value="lossy-high">高质量</option>
+                <option value="lossy-low">低质量</option>
+                <option value="256-high" title="256 色高质量">256 高</option>
+                <option value="256-low" title="256 色低质量">256 低</option>
+                <option value="256-lowest" title="大量减色">极低色</option>
+                <!--<option value="256-middle" title="256 色中质量">256 中</option>-->
+                <!--<option value="lossy-middle">中质量</option>-->
+            </optgroup>
+            <optgroup label="无损" class="op_p">
+                <option class="op_quick" value="quick">快速</option>
+                <option class="op_high" value="high">强力</option>
+                <option class="op_limit" value="limit" selected="selected">极限</option>
+            </optgroup>
+
+        </select>
+
+        <button id="do" class="do" type="button" onclick="doLimiteByfile_data();" > {{(mode=='limit')?'极限':'压缩'}} </button>
+
+        <select title="输出位置 {{out_dir}}" name="" id="outFile" value="limit" class="right", v-model="out"  onclick="select_out()" onblur="select_out_blur()">
+
+            <option value="-overwrite" title="覆盖原文件">覆盖源</option>
+            <option value="-suffix" title="新文件添加特殊后缀名，保存到原文件夹">添加后缀</option>
+            <option value="" title="输出到指定文件夹">输出到...</option>
+
+        </select>
+    </div>
+</div>
+<script src="main.js"></script>
+
+</body>
+</html>

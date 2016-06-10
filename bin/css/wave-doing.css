@@ -1,0 +1,49 @@
+
+.wave {
+    border: 1px solid #1ee3ff;
+    z-index: -23;
+    opacity: .4;
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    background: linear-gradient(70deg, rgba(26, 215, 249, 0.22), rgba(94, 236, 228, 0.2));
+    width: 2500px;
+    height: 2500px;
+    margin-left: -1250px;
+    margin-top: 100px;
+    -webkit-transform-origin: 50% 48%;
+    transform-origin: 50% 48%;
+    border-radius: 40%;
+    animation: drift 8000ms infinite linear;
+}
+
+
+.wave.-five {
+    animation: drift 3000ms infinite linear;
+}
+
+.wave.-four {
+    animation: drift 4000ms infinite linear;
+}
+
+.wave.-three {
+
+    animation: drift 5000ms infinite linear;
+}
+
+.wave.-two {
+    animation: drift 7000ms infinite linear;
+    opacity: .3;
+    background: rgba(56, 255, 220, 0.19);
+}
+
+
+@keyframes drift {
+    from {
+        transform: rotate(0deg);
+    }
+    from {
+        transform: rotate(360deg);
+    }
+}
+
