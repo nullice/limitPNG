@@ -25,6 +25,8 @@ compression Using tool binary list ：
 
 ---- 
 ### LICENSES
+** CC0 Public Domain**
+
 这是一个共有领域作品，本人不保有此作品任何权益，任何人可以随意使用和分发，不要求署名，甚至改个名字拿去卖钱我也不管。
 [![](http://ww3.sinaimg.cn/large/c35419f1gw1f4qhrttrtqj202g00v742.jpg)](http://creativecommons.org/publicdomain/zero/1.0)
 
