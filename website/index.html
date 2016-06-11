@@ -159,13 +159,14 @@
 </div>
 
 
-
 <div class="detail">
 
     <div class="am-g am-container">
         <div class="am-u-lg-12">
-            <h2 class="detail-h2">极限压缩 <span>比同类 PNG 无损工具压缩的更小</span></h2>
-            <p>即是比起公认无损压缩效果最高的工具 PNGGauntle 和 scriptPNG ，limitPNG 仍能压缩的比它们压缩的更小</p>
+            <h2 class="detail-h2">无损压缩 <span> 不改变任何像素的安全压缩 </span></h2>
+            <p>limitPNG 支持无损压缩和有损压缩两种压缩方式，其中无损压缩是不损失任何画质的压缩方法，与有损压缩相比（如 tinypng），虽然体积没优势，但是在对品质有要求的生产环境中不改变原图任何一个像素是必须的</p>
+            <img src="img/vs/lossy.png" alt="" style="    margin-left: auto;    margin-right: auto; display: block;">
+            <p>而在无损压缩工具中，即使比起公认无损压缩率最高的工具： PNGGauntle 和 scriptPNG ，limitPNG 仍能压缩的比它们压缩的更小：</p>
 
             <p>
                 <figure data-am-widget="figure" class="am am-figure am-figure-default "   data-am-figure="{  pureview: 'true' }">
@@ -283,7 +284,9 @@
 
             </p>
 
-            <h2 class="detail-h3">有损压缩也比同类软件压缩得更小</h2>
+            <h2 class="detail-h2">有损压缩  <span> 损失图片质量的暴力压缩 </span></h2>
+            <p>虽然有损压缩会损失画质，但是一些场合对画质要求并不高，而有损压缩能减少更多的体积。limitPNG 也支持有损压缩模式，并且相对于同类工具（tinypng、PP鸭、pngyu 等），limitPNG 有更多画质选项，可以更灵活的在画质和尺寸间取舍。
+            当然压缩效果也毫不逊色：</p>
 
             <img src="img/vs/PNG_lossy_vs.png" alt="" style="    margin-left: auto;    margin-right: auto; display: block;">
 
@@ -320,8 +323,8 @@
     <div class="am-g am-container">
         <div class="am-u-lg-12">
             <h2 class="detail-h2">PNG-8 + Alpha<span> 256 色的 PNG 也能支持透明通道</span></h2>
-            <p>常用 Photoshop 的你应该会认为 256 色的 PNG-8 体积会更小，但是却没有透明通道，透明边缘只能是生硬的锯齿。
-            而使用 limitPNG 压缩的（模式：有损- 256 色）256 色 PNG 图片，可以拥有透明通道，让你不用为了要使用透明边缘而放弃 PNG-8</p>
+            <p>常用 Photoshop 的你应该会认为 256 色的 PNG-8 虽然体积小，但是却没有透明通道，透明边缘只能是生硬的锯齿，只好使用支持通道的 png-24 。
+            而使用 limitPNG 压缩的（模式：有损- 256 色）256 色 PNG 图片，可以拥有透明通道，让你不用为了要使用透明边缘而放弃体积更小的 PNG-8</p>
 
             <img src="http://7d9pbx.com1.z0.glb.clouddn.com/NDKS_IMAGE_PNG-32,8,8a%E5%AF%B9%E6%AF%94.png" alt="" style="    margin-left: auto;    margin-right: auto; display: block;">
         </div>
