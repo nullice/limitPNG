@@ -1,5 +1,7 @@
 # limitPNG
-![](http://ww1.sinaimg.cn/large/c35419f1gw1f4qbtocnx4g20ch0cj1kx.gif)
+<p align="center">
+  <img  src ="https://camo.githubusercontent.com/c10c48507ae27228904724b76ae6dcfeacdf93ac/687474703a2f2f7777312e73696e61696d672e636e2f6c617267652f633335343139663167773166347162746f636e7834673230636830636a316b782e676966" />
+</p>
 
 GUI PNG image compression tool ( GUI use Electron)
 
@@ -13,6 +15,9 @@ GUI PNG image compression tool ( GUI use Electron)
 
 
 ---- 
+
+
+
 
 
 
