@@ -48,8 +48,6 @@ function LimitPNG(in_pngFile)
             this.pngFile = path.resolve(in_pngFile);
             this.tempFile = this.allocTemp();
             // this.color = this.getPngColorInfo();
-
-
         }
         else
         {
@@ -72,7 +70,7 @@ LimitPNG.prototype.doDefault = function (option, mode, callBack)
     }
     else if (mode == "high")
     {
-        this.do([PROCE.pngwolf(1)], PROCE.ect(0), option, callBack)
+        this.do([PROCE.pngwolf(1), PROCE.ect(0)], option, callBack)
     }
     else if (mode == "quick")
     {

@@ -71,9 +71,7 @@ window.filter_file_size_pre = function (value)
 Vue.filter('filter_file_size_pre', filter_file_size_pre)
 
 
-
-
-var file_data=[];
+var file_data = [];
 
 //todo test
 // file_data
@@ -129,10 +127,10 @@ var main_list = new Vue(
         },
         methods: {
 
-            openImg_right: function (e,msg)
+            openImg_right: function (e, msg)
             {
-                if(e.button ==2)
-                shell.openItem(msg)
+                if (e.button == 2)
+                    shell.openItem(msg)
             },
 
             openImg: function (msg)
@@ -141,6 +139,12 @@ var main_list = new Vue(
             },
             open_file: function ()
             {
+                if(v.tasks_doing)
+                {
+                    alert("任务进行中，不能打开文件")
+                    return;
+                }
+
                 dialog.showOpenDialog(
                     {title: "打开文件", properties: ["openFile", "multiSelections"]},
                     (files)=>
@@ -164,15 +168,16 @@ var main_list = new Vue(
                                 }
                             }
                             _put_list(newList);
-
-
                         }
                     }
                 )
             },
             remove_all: function ()
             {
-                this.list = [];
+                if(v.tasks_doing=false)
+                {
+                    this.list = [];
+                }
             }
 
 
@@ -289,7 +294,16 @@ function putFile2list(files)
 
 function _put_list(newList)
 {
-    file_data = [];
+    if (v.tasks_doing)
+    {
+            alert("任务进行中，不能添加文件")
+            return;
+    } else
+    {
+        file_data = [];
+    }
+
+
     for (let i = 0; i < newList.length; i++)
     {
         file_data.push({
@@ -297,7 +311,7 @@ function _put_list(newList)
             size_old: newList[i].size,
             size_new: 0,
             path: newList[i].path,
-            new_File:"",
+            new_File: "",
             doing: false,
             done: false,
             error: false,
@@ -399,7 +413,7 @@ window.doLimiteByfile_data = function ()
                         resolve(0);
                     }
                 }
-                exp.doDefault(main_list.out,main_list.mode,_do_func);
+                exp.doDefault(main_list.out, main_list.mode, _do_func);
             };
         }
     }

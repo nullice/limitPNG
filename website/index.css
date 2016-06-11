@@ -53,7 +53,7 @@ a.am-btn.am-btn-sm.get-btn {
 
 .sur_info {
     font-size: 11px;
-    color: #C1C5C5;
+    color: #3FA1D8;
     margin-top: -12px;
 }
 
@@ -179,12 +179,7 @@ ul.am-avg-sm-3.boxes {
     margin-top: 20px;
 }
 
-.sur_info a {
-    color: #C1C5C5;
-}
-.sur_info a:hover {
-    color: #82cbd6;
-}
+
 
 .about {
     margin-top: 150px;
@@ -206,4 +201,18 @@ h2.about-title.about-color {
 }
 a {
     color: #33A6BB;
+}
+
+.update {
+    font-size: 10px;
+    margin-top: 5px;
+    padding: 5px;
+    color: #A2A1A0;
+}
+
+.sur_info a:hover {
+    color: #3BB4F2;
+}
+.sur_info a {
+    color: #AAADAD;
 }

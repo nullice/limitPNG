@@ -19,7 +19,7 @@
 
 <div id="vue_app" class="animated-q zoomIn" style="-webkit-app-region: drag">
 
-<div  class="title"  onmousedown="if(event.button ==2){ fileCompare()}" onclick="openUrl('http://nullice.com/limitPNG/')">limitPNG <span class="ver">BETA2</span></div>
+<div  class="title"  onmousedown="if(event.button ==2){ fileCompare()}" onclick="openUrl('http://nullice.com/limitPNG/')">limitPNG <span class="ver">BETA3</span></div>
     <!--<h1>Hello World!</h1>-->
     <!--We are using node script>document.write(process.versions.node)</script>,-->
     <!--Chrome <script>document.write(process.versions.chrome)</script>,-->
@@ -101,9 +101,9 @@
 
         <select name="mod" value="limit" class="lift"  v-model="mode">
             <optgroup label="有损">
-                <option value="lossy-quick" title="快速有损压缩">有损快</option>
-                <option value="lossy-high">高质量</option>
-                <option value="lossy-low">低质量</option>
+                <option value="lossy-quick" title="快速有损压缩, 耗时极短，压缩效果一般">有损快</option>
+                <option value="lossy-high" title="压缩效果较好，画质损失较小">高质量</option>
+                <option value="lossy-low" title="压缩效果最佳，画质损失较大">低质量</option>
                 <option value="256-high" title="256 色高质量">256 高</option>
                 <option value="256-low" title="256 色低质量">256 低</option>
                 <option value="256-lowest" title="大量减色">极低色</option>
@@ -111,9 +111,9 @@
                 <!--<option value="lossy-middle">中质量</option>-->
             </optgroup>
             <optgroup label="无损" class="op_p">
-                <option class="op_quick" value="quick">快速</option>
-                <option class="op_high" value="high">强力</option>
-                <option class="op_limit" value="limit" selected="selected">极限</option>
+                <option title="耗时极短，能有极限模式 90% 的压缩效果" class="op_quick" value="quick">快速</option>
+                <option title="耗时较长，效果略逊于极限模式" class="op_high" value="high">强力</option>
+                <option title="压缩效果最佳，耗时极长" class="op_limit" value="limit" selected="selected">极限</option>
             </optgroup>
 
         </select>
