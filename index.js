@@ -174,7 +174,7 @@ var main_list = new Vue(
             },
             remove_all: function ()
             {
-                if(v.tasks_doing=false)
+                if(v.tasks_doing==false)
                 {
                     this.list = [];
                 }
