@@ -139,7 +139,7 @@ var main_list = new Vue(
             },
             open_file: function ()
             {
-                if(v.tasks_doing)
+                if (v.tasks_doing)
                 {
                     alert("任务进行中，不能打开文件")
                     return;
@@ -174,9 +174,10 @@ var main_list = new Vue(
             },
             remove_all: function ()
             {
-                if(v.tasks_doing==false)
+                if (v.tasks_doing == false)
                 {
                     this.list = [];
+                    file_data = [];
                 }
             }
 
@@ -296,39 +297,69 @@ function _put_list(newList)
 {
     if (v.tasks_doing)
     {
-            alert("任务进行中，不能添加文件")
-            return;
+        alert("任务进行中，不能添加文件")
+        return;
     } else
     {
-        file_data = [];
+
+        if (file_data.length > 0)
+        {
+            if (file_data[0].done == true)
+            {
+                file_data = [];
+            }
+        }
+
+
     }
 
 
     for (let i = 0; i < newList.length; i++)
     {
-        file_data.push({
-            name: path.basename(newList[i].path),
-            size_old: newList[i].size,
-            size_new: 0,
-            path: newList[i].path,
-            new_File: "",
-            doing: false,
-            done: false,
-            error: false,
-            error_info: "",
-            time_consum: null,
-            log: "",
 
-        });
+        if (_existPath(newList[i].path,file_data) == false)
+        {
+            file_data.push({
+                name: path.basename(newList[i].path),
+                size_old: newList[i].size,
+                size_new: 0,
+                path: newList[i].path,
+                new_File: "",
+                doing: false,
+                done: false,
+                error: false,
+                error_info: "",
+                time_consum: null,
+                log: "",
+
+            });
+        }
+
+
     }
 
 
     if (file_data !== undefined && file_data.length > 0)
     {
         main_list.list = file_data;
+
     } else
     {
         alert("拖入的文件没有图片")
+    }
+
+
+    function _existPath(_path, objArray)
+    {
+        for (let i = 0; i < objArray.length; i++)
+        {
+            if (objArray[i].path == _path)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }
@@ -349,9 +380,7 @@ function _scanFiles(dirPath, _files, newList)
             {
                 newList.push({path: _path, size: stat.size});
             }
-
         }
-
     }
 }
 

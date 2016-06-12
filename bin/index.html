@@ -19,7 +19,7 @@
 
 <div id="vue_app" class="animated-q zoomIn" style="-webkit-app-region: drag">
 
-<div  class="title"  onmousedown="if(event.button ==2){ fileCompare()}" onclick="openUrl('http://nullice.com/limitPNG/')">limitPNG <span class="ver">BETA3</span></div>
+<div  class="title"  onmousedown="if(event.button ==2){ fileCompare()}" onclick="openUrl('http://nullice.com/limitPNG/')">limitPNG <span class="ver">BETA4</span></div>
     <!--<h1>Hello World!</h1>-->
     <!--We are using node script>document.write(process.versions.node)</script>,-->
     <!--Chrome <script>document.write(process.versions.chrome)</script>,-->
@@ -63,7 +63,7 @@
             </div>
         </div>
 
-        <div class="list_div" v-dragula="list" bag="my-bag" >
+        <div id ="app_list" class="list_div" v-dragula="list" bag="my-bag" >
 
             <div v-for="z of list" class="item " transition="anime" v-bind:class="{'done':z.done, 'error':z.error}">
                 <!--v-on:dragstart="darg_start" v-on:drag="darg_on" v-on:dragend="darg_end" -->

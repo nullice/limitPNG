@@ -53,7 +53,7 @@ a.am-btn.am-btn-sm.get-btn {
 
 .sur_info {
     font-size: 11px;
-    color: #3FA1D8;
+    color: #ADADAD;
     margin-top: -12px;
 }
 
@@ -215,4 +215,18 @@ a {
 }
 .sur_info a {
     color: #AAADAD;
+}
+
+
+
+
+.changelog{
+
+    margin-top: 5px;
+    display: none;
+}
+
+.update:hover .changelog{
+
+    display: block;
 }
