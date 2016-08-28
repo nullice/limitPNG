@@ -19,7 +19,7 @@
 
 <div id="vue_app" class="animated-q zoomIn" style="-webkit-app-region: drag">
 
-<div  class="title"  onmousedown="if(event.button ==2){ fileCompare()}" onclick="openUrl('http://nullice.com/limitPNG/')">limitPNG <span class="ver">BETA4</span></div>
+<div  class="title"  onmousedown="if(event.button ==2){ fileCompare()}" onclick="openUrl('http://nullice.com/limitPNG/')">limitPNG <span class="ver">BETA5</span></div>
     <!--<h1>Hello World!</h1>-->
     <!--We are using node script>document.write(process.versions.node)</script>,-->
     <!--Chrome <script>document.write(process.versions.chrome)</script>,-->
@@ -71,7 +71,7 @@
                 <div class="done_ico" v-if="z.done"><img src="./img/ok.svg" alt=""></div>
                 <div class="error_ico" v-if="z.error" title="{{z.error_info}}"><img src="./img/error.svg" alt=""></div>
                 <div class="name ">
-                    <div v-if="z.path&&true" class="thumbnail anime" title="右键打开原图片, 左键打开新图片" v-on:click="openImg(z.path)"  v-on:mousedown="openImg_right($event,z.new_File)"><img src=""
+                    <div v-if="(z.path&&true)" class="thumbnail anime" title="右键打开原图片, 左键打开新图片" v-on:click="openImg(z.path)"  v-on:mousedown="openImg_right($event,z.new_File)"><img  v-if="list.length<128" src=""
                                                                                                                      v-bind:src="z.path"
                                                                                                                      alt="">
                     </div>

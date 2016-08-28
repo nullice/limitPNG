@@ -3,7 +3,8 @@
  */
 
 import Vue from "vue";
-import VueDragula  from 'vue-dragula'
+import VueDragula  from 'vue-dragula';
+
 Vue.use(VueDragula);
 import "vue-dragula/styles/dragula.min.css"
 import path  from "path"
