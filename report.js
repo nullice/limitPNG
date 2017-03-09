@@ -72,8 +72,9 @@ window.outLogHtml = function ()
 
     let html = `
     <!DOCTYPE html>
-        <html lang="zh-CN">
+        <html lang="zh-CN" >
         <head>
+        <meta charset="utf-8">
 	<title>limitPNG 处理报告</title>
     </head>
     <body>
@@ -228,6 +229,7 @@ window.fileCompare = function ()
     <!DOCTYPE html>
         <html lang="zh-CN">
         <head>
+        <meta charset="utf-8">
 	<title>limitPNG 文件比较</title>
     </head>
     <body>
